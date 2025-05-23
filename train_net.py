@@ -3,46 +3,16 @@ import torch.nn as nn
 import torch.optim as optim
 import torch
 import time
-import sklearn.metrics as mt
 import json
-
+from sklearn.preprocessing import label_binarize
 from graph_results import graph_stats
-
-def print_stats_test(model, test_loader, device, stats):
-
-    model.eval()
-    all_preds = []
-    all_labels = []
-
-    with torch.no_grad():
-        for images, labels in test_loader:
-            images = images.to(device)
-            outputs = model(images)
-            _, preds = torch.max(outputs, 1)
-
-            all_preds.extend(preds.cpu().numpy())
-            all_labels.extend(labels.numpy())
-
-    stats['accuracy'].append(mt.accuracy_score(all_labels, all_preds))
-    stats['precision'].append(mt.precision_score(all_labels, all_preds, average='weighted'))
-    stats['recall'].append(mt.recall_score(all_labels, all_preds, average='weighted'))
-    stats['f1'].append(mt.f1_score(all_labels, all_preds, average='weighted'))
-    stats['r2'].append(mt.r2_score(all_labels, all_preds))
-    print(stats)
-    model.train()
+from utils import add_stats_from_validate, create_stats
 
 
 def train_michcnn(train_loader, test_loader, name=''):
 
-    EPOCHS_NUM = 20
-    stats = {
-        'train_loss': [],
-        'accuracy': [],
-        'recall': [],
-        'precision': [],
-        'f1': [],
-        'r2': []
-    }
+    EPOCHS_NUM = 5
+    stats = create_stats()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = MichCnn().to(device)
@@ -60,7 +30,6 @@ def train_michcnn(train_loader, test_loader, name=''):
             inputs, labels = inputs.to(device), labels.to(device)
             optimizer.zero_grad()
             outputs = model(inputs)
-            print(outputs)
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
@@ -71,7 +40,7 @@ def train_michcnn(train_loader, test_loader, name=''):
 
         print(f"Epoch time {(time.time() - start_epoch_time):.2f}")
         stats['train_loss'].append(running_loss)
-        print_stats_test(model, test_loader, device, stats)
+        add_stats_from_validate(model, test_loader, device, stats)
 
 
     print(f"Total training time: {time.time() - start_time:.2f} s")

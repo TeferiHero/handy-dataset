@@ -23,7 +23,7 @@ class MichCnn(nn.Module):
         self.classifier = nn.Sequential(
             nn.Linear(64 * 18 * 32, 256),
             nn.ReLU(),
-            nn.Linear(256, 10)
+            nn.Linear(256, 7)
         )
 
     def forward(self, x):

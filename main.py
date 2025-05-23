@@ -8,7 +8,7 @@ import sys
 import time
 
 def main():
-    NAME = 'TestCNN'
+    NAME = 'TestCNN_metrics'
     timestamp = time.time()
     formatted = time.strftime("%Y-%m-%d_%H-%M_%S", time.localtime(timestamp))
     log_file = open(f"./logs/log_{formatted}___{NAME}.txt", "w")

@@ -1,0 +1,22 @@
+TestCNN_metrics
+[1,   100] loss: 0.096, time: 2.47 seconds
+[1,   200] loss: 0.189, time: 5.79 seconds
+[1,   300] loss: 0.284, time: 8.52 seconds
+[1,   400] loss: 0.375, time: 11.48 seconds
+[1,   500] loss: 0.467, time: 14.86 seconds
+[1,   600] loss: 0.560, time: 18.03 seconds
+[1,   700] loss: 0.649, time: 21.21 seconds
+[1,   800] loss: 0.742, time: 24.38 seconds
+[1,   900] loss: 0.833, time: 27.84 seconds
+[1,  1000] loss: 0.926, time: 31.21 seconds
+[1,  1100] loss: 1.017, time: 34.25 seconds
+[1,  1200] loss: 1.108, time: 37.63 seconds
+[1,  1300] loss: 1.199, time: 41.04 seconds
+Epoch time 44.27
+{'train_loss': [2562.626649439335], 'accuracy': [0.3503230437903805], 'recall': [0.3503230437903805], 'precision': [0.12272623501055685], 'f1': [0.18177314765518943], 'r2': [-1.0751933343217646], 'confusion_matrix': [array([[488,   0,   0,   0,   0,   0,   0],
+       [170,   0,   0,   0,   0,   0,   0],
+       [160,   0,   0,   0,   0,   0,   0],
+       [158,   0,   0,   0,   0,   0,   0],
+       [152,   0,   0,   0,   0,   0,   0],
+       [144,   0,   0,   0,   0,   0,   0],
+       [121,   0,   0,   0,   0,   0,   0]], dtype=int64)], 'roc_auc_micro': [0.6210217755443886], 'roc_auc_macro': [0.5]}

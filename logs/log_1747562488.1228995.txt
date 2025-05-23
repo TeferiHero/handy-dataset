@@ -1,0 +1,32 @@
+[1,   100] loss: 0.103, time: 3.17 seconds
+[1,   200] loss: 0.202, time: 6.42 seconds
+[1,   300] loss: 0.296, time: 10.29 seconds
+[1,   400] loss: 0.393, time: 13.98 seconds
+[1,   500] loss: 0.488, time: 18.36 seconds
+[1,   600] loss: 0.584, time: 22.59 seconds
+[1,   700] loss: 0.678, time: 26.35 seconds
+[1,   800] loss: 0.775, time: 30.60 seconds
+[1,   900] loss: 0.862, time: 35.24 seconds
+[1,  1000] loss: 0.957, time: 40.43 seconds
+[1,  1100] loss: 1.049, time: 45.73 seconds
+[1,  1200] loss: 1.143, time: 50.90 seconds
+[1,  1300] loss: 1.237, time: 55.62 seconds
+Epoch time 60.46
+{'train_loss': [2649.5375166237354], 'accuracy': [0.3503230437903805], 'recall': [0.3503230437903805], 'precision': [0.12272623501055685], 'f1': [0.18177314765518943], 'r2': [-1.0751933343217646]}
+[2,   100] loss: 0.094, time: 78.29 seconds
+[2,   200] loss: 0.184, time: 82.17 seconds
+[2,   300] loss: 0.278, time: 86.65 seconds
+[2,   400] loss: 0.371, time: 90.52 seconds
+[2,   500] loss: 0.461, time: 94.31 seconds
+[2,   600] loss: 0.550, time: 98.33 seconds
+[2,   700] loss: 0.645, time: 103.45 seconds
+[2,   800] loss: 0.743, time: 108.90 seconds
+[2,   900] loss: 0.832, time: 113.90 seconds
+[2,  1000] loss: 0.928, time: 119.03 seconds
+[2,  1100] loss: 1.019, time: 124.21 seconds
+[2,  1200] loss: 1.109, time: 129.47 seconds
+[2,  1300] loss: 1.198, time: 134.69 seconds
+Epoch time 64.60
+{'train_loss': [2649.5375166237354, 2580.1262988746166], 'accuracy': [0.3503230437903805, 0.3503230437903805], 'recall': [0.3503230437903805, 0.3503230437903805], 'precision': [0.12272623501055685, 0.12272623501055685], 'f1': [0.18177314765518943, 0.18177314765518943], 'r2': [-1.0751933343217646, -1.0751933343217646]}
+Total training time: 158.59 s
+Finished Training

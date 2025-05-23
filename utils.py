@@ -23,7 +23,7 @@ def preview_dataset(dataset):
         figure.add_subplot(rows, cols, i)
         plt.title(labels_map[label])
         plt.axis("off")
-        print(type(img))
+        # print(type(img))
         plt.imshow(img, cmap="gray")
 
     plt.show()

@@ -9,3 +9,9 @@ data/
 
 # Virtual environments
 .venv
+
+all_photos/*
+.idea/*
+dataset/*
+dataset-small/*
+graphs/*

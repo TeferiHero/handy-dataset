@@ -1,0 +1,6 @@
+MichCnn1_base_lr=0.005_momentum=0.9
+[1,   100] loss: 0.105, time: 5.75 seconds
+[1,   200] loss: 0.200, time: 10.70 seconds
+[1,   300] loss: 0.301, time: 15.70 seconds
+[1,   400] loss: 0.394, time: 20.90 seconds
+[1,   500] loss: 0.486, time: 26.69 seconds

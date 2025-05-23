@@ -1,0 +1,5 @@
+MichCnn1_base_lr=0.001_momentum=0.9_batch=32
+Epoch time 20.47
+{'train_loss': [95.58240032196045], 'accuracy': [0.3503230437903805], 'recall': [0.3503230437903805], 'precision': [0.12272623501055685], 'f1': [0.18177314765518943], 'r2': [-1.0751933343217646]}
+Total training time: 36.20 s
+Finished Training

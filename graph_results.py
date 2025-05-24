@@ -10,6 +10,8 @@ def graph_stats(stats, epochs_num, name=''):
     epochs = range(1, epochs_num + 1)
     # Plot each metric
     for metric_name, values in stats.items():
+        if metric_name == 'confusion_matrix':
+            continue
         plt.plot(epochs, values, label=name)
         plt.xlabel("Epoch")
         plt.ylabel("Value")

@@ -26,7 +26,7 @@ def add_stats_from_validate(model, validate_loader, device, stats):
     stats['recall'].append(mt.recall_score(all_labels, all_preds, average='weighted'))
     stats['f1'].append(mt.f1_score(all_labels, all_preds, average='weighted'))
     stats['r2'].append(mt.r2_score(all_labels, all_preds))
-    stats['confusion_matrix'].append(mt.confusion_matrix(all_labels, all_preds))
+    stats['confusion_matrix'].append(mt.confusion_matrix(all_labels, all_preds).tolist())
 
     NUM_CLASSES = 7
     all_labels_bin = label_binarize(all_labels, classes=range(NUM_CLASSES))

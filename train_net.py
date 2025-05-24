@@ -9,18 +9,22 @@ from graph_results import graph_stats
 from utils import add_stats_from_validate, create_stats
 
 
-def train_michcnn(train_loader, test_loader, name=''):
+def train_michcnn(train_loader, validate_loader, name=''):
 
-    EPOCHS_NUM = 5
+    PATH_PREFIX = './models'
+    MODEL_PATH = f'{PATH_PREFIX}/{name}_net.pth'
+    BEST_MODEL_PATH = f'{PATH_PREFIX}/{name}_best_net.pth'
+    EPOCHS_NUM = 20
     stats = create_stats()
 
+    best_f1 = 0
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = MichCnn().to(device)
 
 
     model.train()
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0)
+    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     start_time = time.time()
     for epoch in range(EPOCHS_NUM):
         running_loss = 0.0
@@ -40,13 +44,20 @@ def train_michcnn(train_loader, test_loader, name=''):
 
         print(f"Epoch time {(time.time() - start_epoch_time):.2f}")
         stats['train_loss'].append(running_loss)
-        add_stats_from_validate(model, test_loader, device, stats)
+        add_stats_from_validate(model, validate_loader, device, stats)
+        last_f1 = stats['f1'][-1]
+
+        if last_f1 > best_f1:
+            print(f'Saving best model... Previous F1 = {best_f1}, This F1 {last_f1}')
+            best_f1 = last_f1
+            torch.save(model.state_dict(), BEST_MODEL_PATH)
+
 
 
     print(f"Total training time: {time.time() - start_time:.2f} s")
     print('Finished Training')
-    PATH = f'./models/{name}_net.pth'
-    torch.save(model.state_dict(), PATH)
+
+    torch.save(model.state_dict(), MODEL_PATH)
     with open(f"./stats/{name}_stats.json", "w") as f:
         json.dump(stats, f, indent=4)
     graph_stats(stats, EPOCHS_NUM, name=name)
